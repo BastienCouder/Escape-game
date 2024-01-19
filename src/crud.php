@@ -28,6 +28,25 @@ function read($table, $searchTerm = null) {
     }
 }
 
+//onction read by Id
+function readById($table, $id) {
+    global $connection;
+    try {
+        if ($table && $id !== null) {
+            $query = "SELECT * FROM $table WHERE id = :id";
+            $statement = $connection->prepare($query);
+            $statement->bindParam(':id', $id, PDO::PARAM_INT);
+            $statement->execute();
+            return $statement->fetch(PDO::FETCH_ASSOC);
+        } else {
+            throw new Exception("Table ou ID manquant");
+        }
+    } catch(Exception $e) {
+        echo 'Message: ' . $e->getMessage();
+        var_dump($e);
+    }
+}
+
 //fonction create 
 function create($table, $data) {
     global $connection;
@@ -67,4 +86,54 @@ function delete($table,$id){
     } catch(Exception $e) {
         echo 'Message: ' .$e->getMessage();
     }
+}
+
+//fonction update
+function update($table, $id, $data) {
+    global $connection;
+    $query = "UPDATE $table SET ";
+    $params = array();
+
+    foreach ($data as $key => $value) {
+        $query .= "`$key` = ?, ";
+        $params[] = $value;
+    }
+
+    $query = rtrim($query, ', ');
+
+    $query .= " WHERE id = ?";
+    $params[] = $id;
+
+    $statement = $connection->prepare($query);
+
+    for ($i = 1; $i <= count($params); $i++) {
+        $statement->bindValue($i, $params[$i - 1]);
+    }
+
+    $statement->execute();
+}
+
+function sortData($data) {
+    $sortOrder = $_SESSION['sortOrder'] ?? 'asc';
+
+    usort($data, function($a, $b) use ($sortOrder) {
+        $a_percentage = $a['nbr_attempts'] > 0 ? $a['nbr_success'] / $a['nbr_attempts'] : 0;
+        $b_percentage = $b['nbr_attempts'] > 0 ? $b['nbr_success'] / $b['nbr_attempts'] : 0;
+        
+        if ($sortOrder === 'asc') {
+            return $a_percentage <=> $b_percentage;
+        } else {
+            return $b_percentage <=> $a_percentage;
+        }
+    });
+
+    return $data;
+}
+
+
+function calculateSuccessRate($answer) {
+    if (isset($answer['nbr_attempts']) && $answer['nbr_attempts'] > 0) {
+        return round(($answer['nbr_success'] / $answer['nbr_attempts']) * 100, 2);
+    }
+    return 0;
 }
