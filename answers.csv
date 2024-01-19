@@ -1,0 +1,5 @@
+﻿id,answer,response,success_msg,failure_msg,nbr_attempts,nbr_success
+39,Décryptez ces symboles pour trouver le mot caché : $%#*@&!,SECRET,Incroyable ! Vous avez réussi à déchiffrer les symboles et à découvrir le mot secret.,Il semble que vous ayez besoin de plus d'indices pour résoudre cette énigme.,"0","0"
+40,Trouvez le code secret à 4 chiffres.,7264,Félicitations ! Vous avez réussi à déchiffrer le code secret et à progresser dans le jeu.,"Désolé, le code que vous avez entré est incorrect. Essayez à nouveau.",2,1
+41,Décryptez le message caché en code binaire : 01001000 01100101 01101100 01101100 01101111.,Hello,Bravo ! Vous avez décrypté le message en code binaire et avez trouvé le mot 'Hello'.,Le message en code binaire n'a pas encore été déchiffré. Continuez à chercher.,"0","0"
+42,Résolvez l'équation mathématique suivante : 2 * (3 + 5) - 4 / 2 = ?,14,Impressionnant ! Vous avez résolu l'équation mathématique et trouvé la réponse correcte.,L'équation mathématique n'a pas encore été correctement résolue. Continuez à chercher.,"0","0"
