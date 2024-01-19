@@ -26,7 +26,7 @@ $sortOrder = $_SESSION['sortOrder'] ?? 'asc';
 $toggleOrder = $sortOrder === 'asc' ? 'desc' : 'asc';
 ?>
 
-<section class="w-full pt-44 md:pt-24 px-4 lg:px-24 mx-auto space-y-4">
+<section class="w-full pt-44 pb-12 md:pt-24 px-4 lg:px-24 mx-auto space-y-4">
     <h2 class="text-2xl font-bold">Gestionnaires des questions</h2>
     <div class='sorting-options'>
         <a href="?page=list-question&sortOrder=<?= $toggleOrder ?>"><span class="font-bold">Trier par taux de réussite
