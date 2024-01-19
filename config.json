@@ -1,8 +1,8 @@
 {
-  "db_name": "escape_game",
+  "db_name": "exelmple",
   "host": "localhost",
   "port": 3306,
-  "user": "bastiencd",
-  "password": "bstcd",
-  "url": "http://localhost/Escape-game"
+  "user": "exemple",
+  "password": "exemple",
+  "url": "http://localhost/"
 }
