@@ -1,12 +1,14 @@
 <?php 
+$dbConfig = json_decode(file_get_contents('./config.json'), true);
+
 $globalConfigs = 
 [
     "debugMode" => true,
     "database" => [
-        "db_name" => "escape_game",
-        "host" => "localhost",
-        "port" => 3306,
-        "user" => "bastiencd",
-        "password" => "bstcd"
+        "db_name" => $dbConfig['db_name'],
+        "host" => $dbConfig['host'],
+        "port" => $dbConfig['port'],
+        "user" => $dbConfig['user'],
+        "password" => $dbConfig['password']
     ]
 ];
